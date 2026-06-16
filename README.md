@@ -1,3 +1,14 @@
+# Description
+OncoGuide is a proof-of-concept (POC) open-source agentic AI system designed to support cancer patients, caregivers, clinicians, and researchers with safe and evidence-based cancer information.
+
+The system is built on a multi-agent pipeline that routes each user query through a unified input guardrail for safety screening, followed by a supervisor agent that classifies intent and directs it to one of seven specialised agents: symptom screening, hybrid retrieval-augmented generation (RAG), clinical trial matching, medical report explanation, deterministic tool calling, reasoning-and-acting (ReAct), and general conversation.
+
+The hybrid RAG pipeline combines query rewriting, vector retrieval, BM25 keyword search, reciprocal rank fusion, and cross-encoder re-ranking to retrieve evidence from trusted biomedical sources including NCI PDQ, PubMed, ClinicalTrials.gov, ClinVar, and CIViC.
+
+In this POC phase, all agents are powered by a single Groq-hosted open-source model to validate the architecture and pipeline before optimisation. Future iterations will adopt a task-selective model strategy, assigning different models from providers such as OpenAI or Anthropic based on the role and complexity requirements of each individual agent.
+
+All responses pass through a reflection agent, a claim verification agent, and a final output guardrail. High-risk outputs are escalated to a human reviewer. The full pipeline is traced via LangSmith.
+
 # OncoGuide Agentic AI
 
 An open-source multi-agent AI system for:
